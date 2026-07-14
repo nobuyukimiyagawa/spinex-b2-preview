@@ -1399,14 +1399,20 @@ window.sb_article_url = generateArticleUrl(articleUid);</script><script>document
 }</style></span></div></div>
 <!-- rev1: A-5 中間CTA（成分パート直後の離脱回収） -->
 <div class="rev1-mid-cta">
-  <a href="https://utamaro.biz/LP/spineX/questionnaire_0190/" draggable="false">
-    <picture><img src="meta_img33.png" width="577" height="216" draggable="false" loading="lazy" decoding="async"></picture>
-  </a>
+  <div class="rev1-purupuru">
+    <a href="https://utamaro.biz/LP/spineX/questionnaire_0190/" draggable="false">
+      <picture><img src="meta_img33.png" width="577" height="216" draggable="false" loading="lazy" decoding="async"></picture>
+    </a>
+  </div>
   <p style="text-align: right; margin: 0;"><span style="font-size: 13px;">※お試し6日分をお届け</span></p>
 </div>
 <style>
 .rev1-mid-cta{max-width:600px;margin:18px auto;text-align:center;}
 .rev1-mid-cta img{width:100%;max-width:577px;height:auto;}
+/* 既存CTAと同じ「ぷるぷる＋シャイン」を適用（keyframesは本体LP定義を再利用） */
+.rev1-mid-cta .rev1-purupuru{position:relative;padding:10px 0;overflow:hidden;animation:purupuru 2s linear infinite;}
+.rev1-mid-cta .rev1-purupuru::before{position:absolute;content:'';top:-180px;left:0;width:30px;height:100%;background-color:#fff;opacity:0;pointer-events:none;animation:shiny-brite 3s ease-in-out infinite;}
+.rev1-mid-cta .rev1-purupuru:active{box-shadow:4px 4px 6px rgba(255,255,255,.3),-4px -4px 6px rgba(116,125,136,.2),inset -4px -4px 6px rgba(255,255,255,.2),inset 4px 4px 6px rgba(0,0,0,.2);}
 </style>
 <!-- /rev1 -->
 <div id="docs-internal-guid-c5e328ff-7fff-ca8b-4ac8-f15797139b21" style="text-align: center;"><strong style="font-size: 19px; background-color: transparent; color: rgb(0, 0, 0);">これだけ凄いので</strong></div>
@@ -1436,11 +1442,13 @@ window.sb_article_url = generateArticleUrl(articleUid);</script><script>document
 }</style></span></div></div>
 <div id="docs-internal-guid-2ba9254f-7fff-8194-3050-16d376ba459d" style="text-align: center;"><strong style="font-size: 21px; color: rgb(0, 0, 0); background-color: transparent;">なんと</strong></div>
 <div id="docs-internal-guid-2ba9254f-7fff-8194-3050-16d376ba459d" style="text-align: center;"><strong style="font-size: 21px; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);"><span class="sb-bg-under-marker" style="background: rgba(0, 0, 0, 0) linear-gradient(transparent 60%,#ffff00 0%) repeat scroll 0 0;" data-color="#ffff00" data-border-size="60%">980円で<br>6日分をお試しできる！</span></strong></div>
+<!-- rev1: S-1 価格画像を55%OFF表記に差替（90%OFF＝二重価格の有利誤認を解消。画像ファイルmeta_img29.jpgを差替） -->
 <div><div class="sb-custom"><span contenteditable="false"><div id="sb-part-5805" class="sb-custom-part-mk9iv8xmcc7v15kj1jd"><picture style="display:block; margin:18px 0;"><img loading="lazy" decoding="async" src="meta_img29.jpg" width="570" height="380" draggable="false"  src="meta_img29.jpg"><p style="text-align: right;"><span style="font-size: 13px;" class="sb-fs-free">※お試し6日分</span></p>
 </picture></div>
 <style>#sb-part-5805.sb-custom-part-mk9iv8xmcc7v15kj1jd .preload {
   display: none;
 }</style></span></div></div>
+<!-- /rev1 -->
 <div id="docs-internal-guid-e3f63d8d-7fff-f7b6-a960-4ca3b87701c3" style="text-align: center;"><strong style="font-size: 19px; background-color: transparent; color: rgb(0, 0, 0);">定期ではなく</strong></div>
 <div id="docs-internal-guid-2710b140-7fff-42fe-ad03-310ebb414f78" style="text-align: center;"><strong style="font-size: 19px; background-color: transparent; color: rgb(0, 0, 0);">お試しなので</strong></div>
 <div id="docs-internal-guid-2710b140-7fff-42fe-ad03-310ebb414f78" style="text-align: center;"><strong style="font-size: 19px; background-color: transparent; color: rgb(255, 0, 0);">本当に980円ポッキリ！</strong></div>
@@ -2211,8 +2219,9 @@ if (hasFunnel === "true") {
 .sx-price .yen{font-size:22px;font-weight:800;color:#e5361a;}
 .sx-price .tax{font-size:12px;color:#666;}
 .sx-sub{font-size:13px;color:#444;line-height:1.7;margin:8px 4px 0;}
-.sx-cta{display:block;margin:16px auto 6px;background:linear-gradient(180deg,#ff5a3c,#e5361a);color:#fff;font-size:19px;font-weight:800;text-decoration:none;padding:15px 10px;border-radius:12px;box-shadow:0 6px 0 #b8280f;}
-.sx-cta:active{transform:translateY(3px);box-shadow:0 3px 0 #b8280f;}
+.sx-cta{display:block;margin:16px auto 6px;background:linear-gradient(180deg,#ff5a3c,#e5361a);color:#fff;font-size:19px;font-weight:800;text-decoration:none;padding:15px 10px;border-radius:12px;box-shadow:0 6px 0 #b8280f;position:relative;overflow:hidden;animation:purupuru 2s linear infinite;}
+.sx-cta::before{position:absolute;content:'';top:-180px;left:0;width:30px;height:100%;background-color:#fff;opacity:0;pointer-events:none;animation:shiny-brite 3s ease-in-out infinite;}
+.sx-cta:active{box-shadow:0 3px 0 #b8280f;}
 .sx-mini{font-size:11px;color:#999;margin-top:8px;line-height:1.6;}
 </style>
 <script>
