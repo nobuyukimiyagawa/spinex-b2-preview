@@ -2185,13 +2185,13 @@ if (hasFunnel === "true") {
     <button class="sx-pop-close" aria-label="閉じる" onclick="sxClosePop()">&times;</button>
     <div class="sx-pop-head">
       <div class="lead">ちょっとだけ、お待ちください</div>
-      <div class="h" id="sxPopH">解約方法を<br>探さなくていい¥980です</div>
+      <div class="h" id="sxPopH">解約方法を<br>探さなくていい<span class="px">¥980</span>です</div>
     </div>
     <div class="sx-pop-body">
       <div class="sx-badges">
-        <span class="sx-badge">定期縛りなし</span>
-        <span class="sx-badge">2回目は届きません</span>
-        <span class="sx-badge">送料無料</span>
+        <span class="sx-badge"><i>&#10003;</i>定期縛りなし</span>
+        <span class="sx-badge"><i>&#10003;</i>2回目は届きません</span>
+        <span class="sx-badge"><i>&#10003;</i>送料無料</span>
       </div>
       <div class="sx-price"><span class="cur">お試し6日分</span><br><span class="num">980</span><span class="yen">円</span><span class="tax">（税込）</span></div>
       <div class="sx-sub">指定医薬部外品スパインXを、まず6日分だけ。<br>合わなければ、それで終わり。勝手に定期にはなりません。</div>
@@ -2204,25 +2204,37 @@ if (hasFunnel === "true") {
 .sx-pop-overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:center;justify-content:center;z-index:99999;padding:16px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 .sx-pop-overlay.show{display:flex;animation:sxfade .2s ease;}
 @keyframes sxfade{from{opacity:0}to{opacity:1}}
-.sx-pop{position:relative;width:100%;max-width:380px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:sxpop .25s cubic-bezier(.2,.9,.3,1.2);}
+.sx-pop-overlay .sx-pop{position:relative;width:100%;max-width:380px !important;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:sxpop .25s cubic-bezier(.2,.9,.3,1.2);}
 @keyframes sxpop{from{transform:translateY(24px) scale(.96);opacity:0}to{transform:none;opacity:1}}
 .sx-pop-close{position:absolute;top:8px;right:10px;width:32px;height:32px;border:0;border-radius:50%;background:rgba(0,0,0,.28);color:#fff;font-size:20px;line-height:1;cursor:pointer;z-index:2;}
-.sx-pop-head{padding:18px 20px 12px;text-align:center;color:#fff;background:linear-gradient(135deg,#2e9d4f,#1b7a38);}
-.sx-pop-head .lead{font-size:14px;font-weight:700;opacity:.95;}
-.sx-pop-head .h{font-size:23px;font-weight:800;line-height:1.35;margin-top:4px;}
-.sx-pop-body{padding:16px 20px 20px;text-align:center;}
-.sx-badges{display:flex;gap:6px;justify-content:center;margin:2px 0 12px;flex-wrap:wrap;}
-.sx-badge{font-size:12px;font-weight:700;border-radius:999px;padding:5px 11px;background:#f0f9f1;color:#1b5e20;border:1.5px solid #2e7d32;}
+.sx-pop-head{position:relative;padding:20px 20px 14px;text-align:center;color:#fff;background:linear-gradient(135deg,#0d3fb0,#062a80);}
+.sx-pop-head::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#b98a2e,#f4dd97,#b98a2e);}
+.sx-pop-head .lead{font-size:13px;font-weight:800;color:#f4dd97;letter-spacing:.04em;}
+.sx-pop-head .h{font-size:23px;font-weight:800;line-height:1.4;margin-top:5px;}
+.sx-pop-head .h .px{color:#ffd75e;font-size:26px;}
+.sx-pop-body{padding:16px 20px 20px;text-align:center;background:linear-gradient(180deg,#ffffff,#f7faff);}
+.sx-badges{display:flex;gap:5px;justify-content:center;margin:2px 0 12px;flex-wrap:wrap;}
+.sx-badge{font-size:11.5px;font-weight:800;border-radius:999px;padding:5px 9px;background:#fff;color:#0b2a6b;border:1px solid #e2e9f6;box-shadow:0 3px 8px rgba(11,58,166,.10);white-space:nowrap;}
+.sx-badge i{font-style:normal;font-weight:900;color:#0d3fb0;margin-right:3px;}
 .sx-price{line-height:1.1;margin:6px 0 2px;}
-.sx-price .cur{font-size:15px;font-weight:700;}
+.sx-price .cur{font-size:15px;font-weight:800;color:#0b2a6b;}
 .sx-price .num{font-size:52px;font-weight:900;letter-spacing:-1px;color:#e5361a;}
 .sx-price .yen{font-size:22px;font-weight:800;color:#e5361a;}
 .sx-price .tax{font-size:12px;color:#666;}
-.sx-sub{font-size:13px;color:#444;line-height:1.7;margin:8px 4px 0;}
-.sx-cta{display:block;margin:16px auto 6px;background:linear-gradient(180deg,#ff5a3c,#e5361a);color:#fff !important;font-size:19px;font-weight:800;text-decoration:none !important;padding:15px 10px;border-radius:12px;box-shadow:0 6px 0 #b8280f;position:relative;overflow:hidden;animation:purupuru 2s linear infinite;}
+.sx-sub{font-size:12.5px;color:#444;line-height:1.7;margin:8px 0 0;}
+.sx-cta{display:block;margin:16px auto 6px;background:linear-gradient(180deg,#ff5a3c,#e5361a);color:#fff !important;font-size:19px;font-weight:800;text-decoration:none !important;padding:15px 10px;border-radius:999px;box-shadow:0 6px 0 #b8280f,0 10px 22px rgba(229,54,26,.35);position:relative;overflow:hidden;}
 .sx-cta::before{position:absolute;content:'';top:-180px;left:0;width:30px;height:100%;background-color:#fff;opacity:0;pointer-events:none;animation:shiny-brite 3s ease-in-out infinite;}
+.sx-cta::after{content:"\25B6";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:12px;opacity:.85;}
 .sx-cta:active{box-shadow:0 3px 0 #b8280f;}
 .sx-mini{font-size:11px;color:#999;margin-top:8px;line-height:1.6;}
+</style>
+<style>
+/* rev1: CTAアクション統一 — skewの「ぷるぷる」を鼓動パルス（2拍→静止）に変更。本文CTA×2・中間CTA・離脱ポップCTAの4箇所共通。シャイン演出は維持 */
+@keyframes rev1CtaPulse{0%,32%,100%{transform:scale(1)}8%{transform:scale(1.045)}16%{transform:scale(1)}24%{transform:scale(1.03)}}
+.purupuru{animation:rev1CtaPulse 2.4s ease-in-out infinite !important;will-change:transform;}
+.rev1-mid-cta .rev1-purupuru{animation:rev1CtaPulse 2.4s ease-in-out infinite;will-change:transform;}
+.sx-cta{animation:rev1CtaPulse 2.4s ease-in-out infinite;will-change:transform;}
+@media (prefers-reduced-motion: reduce){.purupuru,.rev1-mid-cta .rev1-purupuru,.sx-cta{animation:none !important;}}
 </style>
 <script>
 (function(){
