@@ -2193,7 +2193,10 @@ if (hasFunnel === "true") {
         <span class="sx-badge"><i>&#10003;</i>2回目は届きません</span>
         <span class="sx-badge"><i>&#10003;</i>送料無料</span>
       </div>
-      <div class="sx-price"><span class="cur">お試し6日分</span><br><span class="num">980</span><span class="yen">円</span><span class="tax">（税込）</span></div>
+      <div class="sx-prod-row">
+        <img class="sx-prod" src="rev1_pop_product.jpg" alt="スパインX（指定医薬部外品）" width="506" height="428">
+        <div class="sx-price"><span class="cur">お試し6日分</span><br><span class="num">980</span><span class="yen">円</span><br><span class="tax">（税込）</span></div>
+      </div>
       <div class="sx-sub">指定医薬部外品スパインXを、まず6日分だけ。<br>合わなければ、それで終わり。勝手に定期にはなりません。</div>
       <a href="https://utamaro.biz/LP/spineX/questionnaire_0190/" class="sx-cta">このお試しだけ、もらっておく</a>
       <div class="sx-mini">※お一人様1回限り。数量に限りがあります。</div>
@@ -2216,7 +2219,9 @@ if (hasFunnel === "true") {
 .sx-badges{display:flex;gap:5px;justify-content:center;margin:2px 0 12px;flex-wrap:wrap;}
 .sx-badge{font-size:11.5px;font-weight:800;border-radius:999px;padding:5px 9px;background:#fff;color:#0b2a6b;border:1px solid #e2e9f6;box-shadow:0 3px 8px rgba(11,58,166,.10);white-space:nowrap;}
 .sx-badge i{font-style:normal;font-weight:900;color:#0d3fb0;margin-right:3px;}
-.sx-price{line-height:1.1;margin:6px 0 2px;}
+.sx-prod-row{display:flex;align-items:center;gap:10px;margin:6px 0 2px;background:#fff;border:1px solid #e2e9f6;border-radius:12px;padding:10px 12px;box-shadow:0 3px 10px rgba(11,58,166,.08);}
+.sx-prod{width:44% !important;height:auto;flex:0 0 auto;display:block;}
+.sx-price{flex:1;line-height:1.15;margin:0;text-align:center;}
 .sx-price .cur{font-size:15px;font-weight:800;color:#0b2a6b;}
 .sx-price .num{font-size:52px;font-weight:900;letter-spacing:-1px;color:#e5361a;}
 .sx-price .yen{font-size:22px;font-weight:800;color:#e5361a;}
