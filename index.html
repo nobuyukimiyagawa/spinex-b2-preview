@@ -2278,10 +2278,22 @@ if (hasFunnel === "true") {
     + '.rev1-hi{position:relative;outline:3px dashed #e5361a;outline-offset:3px;background:rgba(229,54,26,.055);border-radius:5px;}'
     + '.rev1-hi::before{content:attr(data-label);position:absolute;top:-2px;left:0;transform:translateY(-100%);background:#e5361a;color:#fff;font-size:11px;font-weight:800;padding:2px 9px;border-radius:7px 7px 7px 0;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis;z-index:6;font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.25);}'
     + '.rev1-rvbar{position:fixed;top:0;left:0;right:0;background:#111;color:#fff;font-size:12px;font-weight:700;text-align:center;padding:7px 10px;z-index:100000;font-family:sans-serif;line-height:1.4;}'
-    + 'body.rev1-rv-on{padding-top:34px;}';
+    + 'body.rev1-rv-on{padding-top:34px;}'
+    /* ポップカードはoverflow:hiddenのためラベルをカード内側(右下)に表示 */
+    + '.rev1-hi-pop::before{top:auto !important;left:auto !important;right:0;bottom:0;transform:none !important;border-radius:7px 0 0 0 !important;}'
+    /* 既存CTA(.purupuru)は::beforeがシャイン演出で使用済みのため、ラベルは::afterで枠内側(左上)に表示 */
+    + '.purupuru.rev1-hi::before{content:"" !important;}'
+    + '.purupuru.rev1-hi::after{content:attr(data-label);position:absolute;top:0;left:0;background:#e5361a;color:#fff;font-size:11px;font-weight:800;padding:2px 9px;border-radius:0 0 7px 0;z-index:6;font-family:sans-serif;box-shadow:0 2px 6px rgba(0,0,0,.25);}';
   var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
   var bar=document.createElement('div'); bar.className='rev1-rvbar';
-  bar.textContent='レビューモード：赤枠＝今回の改修箇所（通常表示はURL末尾の ?review を外す）';
+  var barTxt=document.createElement('span');
+  barTxt.textContent='レビューモード：赤枠＝今回の改修箇所（通常表示はURL末尾の ?review を外す）';
+  bar.appendChild(barTxt);
+  var popBtn=document.createElement('button');
+  popBtn.textContent='離脱ポップを確認';
+  popBtn.style.cssText='margin-left:10px;padding:3px 12px;border-radius:999px;border:0;background:#e5361a;color:#fff;font-weight:800;cursor:pointer;font-size:11px;font-family:sans-serif;';
+  popBtn.onclick=function(){ try{sessionStorage.removeItem('sx_exit_pop_shown');}catch(e){} if(window.sxOpenPop) window.sxOpenPop(); };
+  bar.appendChild(popBtn);
   document.body.appendChild(bar); document.body.classList.add('rev1-rv-on');
   var walker=document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT, null);
   var comments=[], n; while(n=walker.nextNode()){ comments.push(n); }
@@ -2301,7 +2313,13 @@ if (hasFunnel === "true") {
     }
     parent.removeChild(c); count++;
   });
-  bar.textContent='レビューモード：赤枠＝今回の改修箇所 '+count+'件（通常表示はURL末尾の ?review を外す）';
+  /* コメントマーカー外の改修にも枠を付与: 既存CTA×2のアクション変更(スタイルのみ)と離脱ポップ刷新(非表示要素) */
+  document.querySelectorAll('.purupuru').forEach(function(el){
+    el.classList.add('rev1-hi'); el.setAttribute('data-label','改修 CTAアクション（鼓動パルス＋シャイン）'); count++;
+  });
+  var sxp=document.querySelector('.sx-pop');
+  if(sxp){ sxp.classList.add('rev1-hi','rev1-hi-pop'); sxp.setAttribute('data-label','改修 離脱ポップ デザイン刷新＋CTAアクション'); count++; }
+  barTxt.textContent='レビューモード：赤枠＝今回の改修箇所 '+count+'件（上のボタンで離脱ポップも確認可・通常表示はURL末尾の ?review を外す）';
 })();
 </script>
 </body></html>
